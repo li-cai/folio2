@@ -1,18 +1,15 @@
 {
-  "name": "Logins",
+  "name": "folio",
   "version": "1.0.0",
   "engines": {
     "node": "7.5.0",
     "npm": "4.0.5"
   },
-  "description": "A Simple Login Example using Node.js, Mongo and Redis",
+  "description": "A Micro-Recruiting Application",
   "main": "./server/app.js",
   "scripts": {
-    "buildLoginBundle": "babel ./client/login ./client/helper --presets react --out-file ./hosted/loginBundle.js",
-    "buildAppBundle": "babel ./client/app ./client/helper --presets react --out-file ./hosted/bundle.js",
-		"build": "npm run buildLoginBundle && npm run buildAppBundle",
-		"watchLoginBundle": "babel --watch ./client/login ./client/helper --presets react --out-file ./hosted/loginBundle.js",
-		"watchAppBundle": "babel --watch ./client/app ./client/helper --presets react --out-file ./hosted/bundle.js",
+    "build": "babel ./client/helper/helper.js --out-file ./hosted/helper.js && browserify -t client/client.js -o hosted/bundle.js",
+    "watch": "babel --watch ./client/helper/helper.js --out-file ./hosted/helper.js && watchify -v client/client.js -o hosted/bundle.js",
     "nodemon": "nodemon --watch ./server ./server/app.js",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
@@ -24,9 +21,13 @@
     "Redis",
     "Login"
   ],
-  "author": "Cody Van De Mark",
+	"browserify": {
+    "transform": [["babelify", { "presets": ["react"] }]]
+  },
+  "author": "Cailin Li",
   "license": "Apache 2.0",
   "dependencies": {
+    "babelify": "^7.3.0",
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
     "connect-redis": "^3.0.2",
@@ -37,6 +38,8 @@
     "express-session": "^1.13.0",
     "helmet": "^1.3.0",
     "mongoose": "^4.4.6",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3"
   },
@@ -44,9 +47,11 @@
     "babel-cli": "^6.18.0",
     "babel-preset-env": "^1.1.8",
     "babel-preset-react": "^6.23.0",
+    "browserify": "^14.3.0",
     "eslint": "^3.0.0",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.10.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "watchify": "^3.9.0"
   }
 }

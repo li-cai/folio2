@@ -1,19 +1,23 @@
-const handleLogin = (e) => {
-	e.preventDefault();
+import Login from './login/Login.js';
+import ReactDOM from 'react-dom';
+import React from 'react';
 
-	$('#domoMessage').animate({ width: 'hide' }, 350);
-
-	if ($('#user').val() === '' || $('#pass').val() === '') {
-		handleError('RAWR! Username or password is empty');
-		return false;
-	}
-
-	console.log($('input[name=_csrf]').val());
-
-	sendAjax('POST', $('#loginForm').attr('action'), $('#loginForm').serialize(), redirect);
-
-	return false;
-};
+// const handleLogin = (e) => {
+// 	e.preventDefault();
+//
+// 	$('#domoMessage').animate({ width: 'hide' }, 350);
+//
+// 	if ($('#user').val() === '' || $('#pass').val() === '') {
+// 		handleError('RAWR! Username or password is empty');
+// 		return false;
+// 	}
+//
+// 	console.log($('input[name=_csrf]').val());
+//
+// 	sendAjax('POST', $('#loginForm').attr('action'), $('#loginForm').serialize(), redirect);
+//
+// 	return false;
+// };
 
 const handleSignup = (e) => {
 	e.preventDefault();
@@ -35,23 +39,23 @@ const handleSignup = (e) => {
 	return false;
 };
 
-const renderLogin = function() {
-	return (
-		<form id="loginForm" name="loginForm"
-			onSubmit={this.handleSubmit}
-			action="/login"
-			method="POST"
-			className="mainForm"
-		>
-			<label htmlFor="username">Username: </label>
-			<input id="user" type="text" name="username" placeholder="username" />
-			<label htmlFor="pass">Password: </label>
-			<input id="pass" type="password" name="pass" placeholder="password" />
-			<input type="hidden" name="_csrf" value={this.props.csrf} />
-			<input className="formSubmit" type="submit" value="Sign In"/>
-		</form>
-	);
-};
+// const renderLogin = function() {
+// 	return (
+// 		<form id="loginForm" name="loginForm"
+// 			onSubmit={this.handleSubmit}
+// 			action="/login"
+// 			method="POST"
+// 			className="mainForm"
+// 		>
+// 			<label htmlFor="username">Username: </label>
+// 			<input id="user" type="text" name="username" placeholder="username" />
+// 			<label htmlFor="pass">Password: </label>
+// 			<input id="pass" type="password" name="pass" placeholder="password" />
+// 			<input type="hidden" name="_csrf" value={this.props.csrf} />
+// 			<input className="formSubmit" type="submit" value="Sign In"/>
+// 		</form>
+// 	);
+// };
 
 const renderSignup = function() {
 	return (
@@ -98,22 +102,26 @@ const createSignupWindow = (csrf) => {
 };
 
 const setup = (csrf) => {
-	const loginButton = document.querySelector('#loginButton');
-	const signupButton = document.querySelector('#signupButton');
+	// const loginButton = document.querySelector('#loginButton');
+	// const signupButton = document.querySelector('#signupButton');
+	//
+	// signupButton.addEventListener('click', (e) => {
+	// 	e.preventDefault();
+	// 	createSignupWindow(csrf);
+	// 	return false;
+	// });
+	//
+	// loginButton.addEventListener('click', (e) => {
+	// 	e.preventDefault();
+	// 	createLoginWindow(csrf);
+	// 	return false;
+	// });
 
-	signupButton.addEventListener('click', (e) => {
-		e.preventDefault();
-		createSignupWindow(csrf);
-		return false;
-	});
-
-	loginButton.addEventListener('click', (e) => {
-		e.preventDefault();
-		createLoginWindow(csrf);
-		return false;
-	});
-
-	createLoginWindow(csrf);
+	// createLoginWindow(csrf);
+	ReactDOM.render(
+		<Login csrf={csrf} />,
+		document.querySelector('#content')
+	);
 };
 
 const getToken = () => {

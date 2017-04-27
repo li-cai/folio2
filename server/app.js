@@ -49,7 +49,7 @@ app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
+app.engine('handlebars', expressHandlebars());
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
 
