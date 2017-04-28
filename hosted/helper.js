@@ -2,8 +2,15 @@ function handleError(message) {
 	$('#errorMessage').text(message);
 }
 
+function hideMessage(id) {
+	$(id).text('');
+}
+
+function handleSuccess(message) {
+	$('#successMessage').text(message);
+}
+
 function redirect(response) {
-	$("#domoMessage").animate({ width: 'hide' }, 350);
 	window.location = response.redirect;
 }
 

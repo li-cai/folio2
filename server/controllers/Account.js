@@ -19,7 +19,7 @@ const login = (request, response) => {
   const password = `${req.body.pass}`;
 
   if (!username || !password) {
-    return res.status(400).json({ error: 'RAWR! All fields are required!' });
+    return res.status(400).json({ error: 'Please enter all fields' });
   }
 
   return Account.AccountModel.authenticate(username, password, (err, account) => {
@@ -42,11 +42,11 @@ const signup = (request, response) => {
   req.body.pass2 = `${req.body.pass2}`;
 
   if (!req.body.username || !req.body.pass || !req.body.pass2) {
-    return res.status(400).json({ error: 'RAWR! All fields are required!' });
+    return res.status(400).json({ error: 'Please enter all fields' });
   }
 
   if (req.body.pass !== req.body.pass2) {
-    return res.status(400).json({ error: 'RAWR! Passwords do not match!' });
+    return res.status(400).json({ error: 'Passwords do not match' });
   }
 
   return Account.AccountModel.generateHash(req.body.pass, (salt, hash) => {
@@ -61,7 +61,7 @@ const signup = (request, response) => {
     const savePromise = newAccount.save();
     savePromise.then(() => {
       req.session.account = Account.AccountModel.toAPI(newAccount);
-      res.json({ redirect: '/maker' });
+      res.json({ redirect: '/portals' });
     });
 
     savePromise.catch((err) => {
@@ -72,6 +72,48 @@ const signup = (request, response) => {
 
       return res.status(400).json({ error: 'An error occurred' });
     });
+  });
+};
+
+const changePassword = (req, res) => {
+	const oldpass = `${req.body.oldpass}`;
+  const pass = `${req.body.pass}`;
+  const pass2 = `${req.body.pass2}`;
+
+	if (!oldpass|| !pass || !pass2) {
+    return res.status(400).json({ error: 'Please enter all fields' });
+  }
+
+  if (pass !== pass2) {
+    return res.status(400).json({ error: 'Passwords do not match' });
+  }
+
+	const id = req.session.account._id;
+
+	Account.AccountModel.checkPassword(id, oldpass, (err, doc) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred' });
+    }
+
+		if (!doc) {
+			return res.status(401).json({ error: 'The old password is incorrect'});
+		}
+
+		Account.AccountModel.generateHash(pass, (salt, hash) => {
+			Account.AccountModel.findByIdAndUpdate(id, { $set: { salt, password: hash } }, { new: true }, (err, doc) => {
+				if (err) {
+		      console.log(err);
+		      return res.status(400).json({ error: 'An error occurred' });
+		    }
+
+				console.log(hash);
+
+				console.log(doc);
+
+				return res.status(200).json({ message: 'Password changed successfully :)'});
+			});
+		});
   });
 };
 
@@ -92,4 +134,5 @@ module.exports = {
   signup,
   login,
   getToken,
+	changePassword,
 };

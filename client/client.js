@@ -3,6 +3,7 @@ import React from 'react';
 
 import Login from './login/Login.js';
 import Signup from './login/Signup.js';
+import App from './app/App.js';
 
 const renderSignup = (csrf) => {
 	const onLogin = () => {
@@ -32,8 +33,19 @@ const setup = (csrf) => {
 
 const getToken = () => {
 	sendAjax('GET', '/getToken', null, (result) => {
-		setup(result.csrfToken);
+		if (document.location.pathname === '/portals') {
+			loadPortals(result.csrfToken);
+		} else {
+			setup(result.csrfToken);
+		}
 	});
+};
+
+const loadPortals = (csrf) => {
+	ReactDOM.render(
+		<App csrf={csrf} />,
+		document.querySelector('#app')
+	);
 };
 
 $(document).ready(() => {

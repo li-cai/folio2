@@ -41,12 +41,14 @@ const PortalSchema = new mongoose.Schema({
 //   age: doc.age,
 // });
 //
-// DomoSchema.statics.findByOwner = (ownerId, callback) => {
-//   const search = {
-//     owner: convertId(ownerId),
-//   };
-//   return DomoModel.find(search).select('name age faveFood').exec(callback);
-// };
+
+PortalSchema.statics.findByOwner = (ownerId, callback) => {
+  const search = {
+    owner: convertId(ownerId),
+  };
+  return PortalModel.find(search).select('label titles skills color').exec(callback);
+};
+
 //
 // DomoSchema.statics.searchByName = (name, callback) => {
 //   const search = {
