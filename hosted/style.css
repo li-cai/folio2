@@ -7,8 +7,18 @@ html, body {
 }
 
 body {
-  background-color: #A8444D;
-  font-family: 'Chivo', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  background-color: #A4B8CE;
+}
+
+div {
+	font-family: 'Chivo' !important;
+}
+
+a {
+	cursor: pointer !important;
 }
 
 .logo {
@@ -19,5 +29,39 @@ body {
 .nav {
     width: 100%;
 		text-align: center;
-		padding-top: 20px;
+}
+
+#content {
+	text-align: center;
+	padding: 30px;
+}
+
+.ui.input.textField {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.textField input {
+	font-family: 'Chivo', sans-serif !important;
+	font-size: 1.1em;
+	width: 300px;
+}
+
+.ui.button.loginButton {
+	font-family: 'Chivo', sans-serif !important;
+	margin-top: 5px;
+	width: 300px;
+}
+
+.signUpBlurb {
+	margin-top: 35px;
+	font-size: 1.1em;
+}
+
+#errorMessage {
+	text-align: center;
+	font-size: 1.1em;
+	color: #A83C2D;
+	margin-top: 20px;
+	font-weight: 700;
 }

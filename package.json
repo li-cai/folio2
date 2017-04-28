@@ -8,8 +8,8 @@
   "description": "A Micro-Recruiting Application",
   "main": "./server/app.js",
   "scripts": {
-    "build": "babel ./client/helper/helper.js --out-file ./hosted/helper.js && browserify -t client/client.js -o hosted/bundle.js",
-    "watch": "babel --watch ./client/helper/helper.js --out-file ./hosted/helper.js && watchify -v client/client.js -o hosted/bundle.js",
+    "build": "browserify -t client/client.js -o hosted/bundle.js",
+    "watch": "watchify client/client.js -o hosted/bundle.js",
     "nodemon": "nodemon --watch ./server ./server/app.js",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",

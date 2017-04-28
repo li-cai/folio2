@@ -5,10 +5,8 @@ class Login extends Component {
 	handleLogin(e) {
 		e.preventDefault();
 
-		// $('#domoMessage').animate({ width: 'hide' }, 350);
-
 		if ($('#user').val() === '' || $('#pass').val() === '') {
-			handleError('RAWR! Username or password is empty');
+			handleError('Please fill out all the fields.');
 			return false;
 		}
 
@@ -27,12 +25,17 @@ class Login extends Component {
 				method="POST"
 				className="mainForm"
 			>
-				<label htmlFor="username">Username: </label>
-				<input id="user" type="text" name="username" placeholder="username" />
-				<label htmlFor="pass">Password: </label>
-				<input id="pass" type="password" name="pass" placeholder="password" />
+				<div className="ui input textField">
+					<input id="user" type="text" name="username" placeholder="Username" />
+				</div>
+				<div className="ui input textField">
+					<input id="pass" type="password" name="pass" placeholder="Password" />
+				</div>
 				<input type="hidden" name="_csrf" value={this.props.csrf} />
-				<input className="formSubmit" type="submit" value="Sign In"/>
+				<button className="large ui yellow button loginButton" type="submit" form="loginForm" value="Login">Login</button>
+				<div className="signUpBlurb">
+					Don't have an account? <a className="signUpLink" onClick={this.props.onSignUp}>Sign Up</a> now!
+				</div>
 			</form>
 		);
 	}
