@@ -76,11 +76,11 @@ const signup = (request, response) => {
 };
 
 const changePassword = (req, res) => {
-	const oldpass = `${req.body.oldpass}`;
+  const oldpass = `${req.body.oldpass}`;
   const pass = `${req.body.pass}`;
   const pass2 = `${req.body.pass2}`;
 
-	if (!oldpass|| !pass || !pass2) {
+  if (!oldpass || !pass || !pass2) {
     return res.status(400).json({ error: 'Please enter all fields' });
   }
 
@@ -88,32 +88,30 @@ const changePassword = (req, res) => {
     return res.status(400).json({ error: 'Passwords do not match' });
   }
 
-	const id = req.session.account._id;
+  const id = req.session.account._id;
 
-	Account.AccountModel.checkPassword(id, oldpass, (err, doc) => {
+  return Account.AccountModel.checkPassword(id, oldpass, (err, doc) => {
     if (err) {
       console.log(err);
       return res.status(400).json({ error: 'An error occurred' });
     }
 
-		if (!doc) {
-			return res.status(401).json({ error: 'The old password is incorrect'});
-		}
+    if (!doc) {
+      return res.status(401).json({ error: 'The old password is incorrect' });
+    }
 
-		Account.AccountModel.generateHash(pass, (salt, hash) => {
-			Account.AccountModel.findByIdAndUpdate(id, { $set: { salt, password: hash } }, { new: true }, (err, doc) => {
-				if (err) {
-		      console.log(err);
-		      return res.status(400).json({ error: 'An error occurred' });
-		    }
+    return Account.AccountModel.generateHash(pass, (salt, hash) =>
+      Account.AccountModel.findByIdAndUpdate(
+        id,
+        { $set: { salt, password: hash } },
+        { new: true }, (err2) => {
+          if (err2) {
+            console.log(err2);
+            return res.status(400).json({ error: 'An error occurred' });
+          }
 
-				console.log(hash);
-
-				console.log(doc);
-
-				return res.status(200).json({ message: 'Password changed successfully :)'});
-			});
-		});
+          return res.status(200).json({ message: 'Password changed successfully :)' });
+        }));
   });
 };
 
@@ -134,5 +132,5 @@ module.exports = {
   signup,
   login,
   getToken,
-	changePassword,
+  changePassword,
 };

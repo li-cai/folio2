@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import Settings from './Settings.js';
+import Portals from './Portals.js';
 
 const AppState = {
 	MY_PORTALS: 0,
@@ -21,6 +22,9 @@ class App extends Component {
 		switch (this.state.page) {
 			case AppState.SETTINGS:
 				return <Settings csrf={this.props.csrf} />;
+
+			case AppState.MY_PORTALS:
+				return <Portals csrf={this.props.csrf} />;
 
 			default:
 				break;

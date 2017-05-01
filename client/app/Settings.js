@@ -36,7 +36,7 @@ class Settings extends Component {
 		return (
 			<div className="settings">
 			  <div className="header">
-					Change Password
+					Settings
 				</div>
 				<div id="errorMessage"></div>
 				<div id="successMessage"></div>
@@ -56,8 +56,8 @@ class Settings extends Component {
 						<input id="pass2" type="password" name="pass2" placeholder="Confirm New Password" />
 					</div>
 					<input type="hidden" name="_csrf" value={this.props.csrf} />
-					<button className="large ui olive button loginButton" type="submit" form="changePasswordForm" value="changePassword">
-						Submit
+					<button className="large ui blue button loginButton" type="submit" form="changePasswordForm" value="changePassword">
+						Change Password
 					</button>
 				</form>
 			</div>

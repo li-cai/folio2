@@ -20,16 +20,16 @@ const PortalSchema = new mongoose.Schema({
   },
   skills: {
     type: [String],
-    required: true
+    required: true,
   },
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
     ref: 'Account',
   },
-	blurb: {
-		type: String
-	},
+  blurb: {
+    type: String,
+  },
   color: {
     type: String,
     default: '#A8444D',
@@ -46,17 +46,8 @@ PortalSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
     owner: convertId(ownerId),
   };
-  return PortalModel.find(search).select('label titles skills color').exec(callback);
+  return PortalModel.find(search).select('_id label titles skills').exec(callback);
 };
-
-//
-// DomoSchema.statics.searchByName = (name, callback) => {
-//   const search = {
-//     name: { $regex: name, $options: 'i' },
-//   };
-//
-//   return DomoModel.find(search).select('name age faveFood').exec(callback);
-// };
 
 PortalModel = mongoose.model('Portal', PortalSchema);
 
