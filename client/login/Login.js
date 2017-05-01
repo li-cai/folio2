@@ -28,7 +28,7 @@ class Login extends Component {
         <button className="large ui yellow button loginButton" type="submit" form="loginForm" value="Login">Login</button>
         <div className="signUpBlurb">
           Don't have an account?
-          <a className="signUpLink" onClick={this.props.onSignUp}>Sign Up</a>
+          <a className="signUpLink" onClick={this.props.onSignUp}> Sign Up </a>
           now!
         </div>
       </form>

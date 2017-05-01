@@ -1164,7 +1164,7 @@ var Login = function (_Component) {
           _react2.default.createElement(
             'a',
             { className: 'signUpLink', onClick: this.props.onSignUp },
-            'Sign Up'
+            ' Sign Up '
           ),
           'now!'
         )
@@ -1260,7 +1260,7 @@ var Signup = function (_Component) {
           _react2.default.createElement(
             'a',
             { className: 'signUpLink', onClick: this.props.onLogin },
-            'Login'
+            ' Login '
           ),
           'here!'
         )
