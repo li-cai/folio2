@@ -40,7 +40,7 @@ const FolioSchema = new mongoose.Schema({
 
 FolioSchema.statics.findByPortalId = (portalId, callback) => {
   const search = {
-    portalId: portalId,
+    portalId,
   };
   return FolioModel.find(search).select('name title skills email portfolio').exec(callback);
 };

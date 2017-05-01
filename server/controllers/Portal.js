@@ -1,9 +1,7 @@
 const models = require('../models');
 const Portal = models.Portal;
 
-const portalPage = (req, res) => {
-  return res.render('app', { csrfToken: req.csrfToken() });
-};
+const portalPage = (req, res) => res.render('app', { csrfToken: req.csrfToken() });
 
 const createPortal = (req, res) => {
   const { label, titles, skills } = req.body;

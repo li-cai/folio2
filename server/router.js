@@ -16,7 +16,7 @@ const router = (app) => {
   app.get('/portal/:id', controllers.Folio.getPortal);
   app.get('/:portalId/folios', controllers.Folio.getFolios);
   app.post('/folio', controllers.Folio.createFolio);
-  app.get('*', function(req, res) { res.redirect('/'); });
+  app.get('*', (req, res) => { res.redirect('/'); });
 };
 
 module.exports = router;
