@@ -4,6 +4,7 @@ import React from 'react';
 import Login from './login/Login.js';
 import Signup from './login/Signup.js';
 import App from './app/App.js';
+import Folio from './folio/Folio.js';
 
 const renderSignup = (csrf) => {
   const onLogin = () => {
@@ -33,12 +34,19 @@ const setup = (csrf) => {
 
 const getToken = () => {
   sendAjax('GET', '/getToken', null, (result) => {
-    if (document.location.pathname === '/portals') {
+    const pathname = document.location.pathname;
+    if (pathname === '/portals') {
       loadPortals(result.csrfToken);
-    } else {
+    } else if (pathname === '/') {
       setup(result.csrfToken);
+    } else {
+      loadFolio(result.csrfToken);
     }
   });
+};
+
+const loadFolio = (csrf) => {
+  ReactDOM.render(<Folio csrf={csrf} />, document.querySelector('#folioContainer'));
 };
 
 const loadPortals = (csrf) => {

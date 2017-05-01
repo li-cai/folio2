@@ -12,7 +12,11 @@ const router = (app) => {
   app.post('/portal', mid.requiresLogin, controllers.Portal.createPortal);
   app.post('/changePassword', mid.requiresLogin, controllers.Account.changePassword);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
-  appp.get('/portal/:id', )
+  app.get('/:portalId', controllers.Folio.folioPage);
+  app.get('/portal/:id', controllers.Folio.getPortal);
+  app.get('/:portalId/folios', controllers.Folio.getFolios);
+  app.post('/folio', controllers.Folio.createFolio);
+  app.get('*', function(req, res) { res.redirect('/'); });
 };
 
 module.exports = router;

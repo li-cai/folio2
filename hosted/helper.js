@@ -28,3 +28,15 @@ function sendAjax(type, action, data, success) {
 		}
 	});
 }
+
+function sendAjax(type, action, data, success, error) {
+	$.ajax({
+		cache: false,
+		type: type,
+		url: action,
+		data: data,
+		dataType: 'json',
+		success: success,
+		error: error
+  });
+}

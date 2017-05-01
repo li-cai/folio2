@@ -41,7 +41,7 @@ class MyPortals extends Component {
             <div className="portalLabel">
               <div className="portalNumber">{index + 1}</div>
               {portal.label}
-              <a className="portalLink" href={`/portal/${portal._id}`} target="_blank">
+              <a className="portalLink" href={`/${portal._id}`} target="_blank">
                 <i className="external icon"></i>
               </a>
             </div>

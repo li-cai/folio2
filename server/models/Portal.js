@@ -36,12 +36,6 @@ const PortalSchema = new mongoose.Schema({
   },
 });
 
-// DomoSchema.statics.toAPI = (doc) => ({
-//   name: doc.name,
-//   age: doc.age,
-// });
-//
-
 PortalSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
     owner: convertId(ownerId),
