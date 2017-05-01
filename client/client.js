@@ -8,6 +8,7 @@ import Folio from './folio/Folio.js';
 
 const renderSignup = (csrf) => {
   const onLogin = () => {
+    hideMessage('#errorMessage');
     renderLogin(csrf);
   };
 
@@ -19,6 +20,7 @@ const renderSignup = (csrf) => {
 
 const renderLogin = (csrf) => {
   const onSignUp = () => {
+    hideMessage('#errorMessage');
     renderSignup(csrf);
   };
 

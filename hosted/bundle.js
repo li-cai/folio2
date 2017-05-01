@@ -158,7 +158,7 @@ var Card = function (_Component) {
           email = _props$cardInfo.email,
           portfolio = _props$cardInfo.portfolio;
 
-      var colorIndex = this.props.colorIndex ? this.props.colorIndex : 1;
+      var colorIndex = this.props.colorIndex === 0 || this.props.colorIndex ? this.props.colorIndex : 1;
       var color = COLORS[colorIndex];
 
       return _react2.default.createElement(
@@ -260,7 +260,6 @@ var MyPortals = function (_Component) {
     key: 'renderPortals',
     value: function renderPortals() {
       var portals = this.state.portals;
-      console.log(portals);
 
       if (portals.length < 1) {
         return _react2.default.createElement(
@@ -280,7 +279,7 @@ var MyPortals = function (_Component) {
           return _react2.default.createElement(
             'div',
             { key: index, className: 'portalCard' },
-            _react2.default.createElement(_Card2.default, { cardInfo: cardInfo }),
+            _react2.default.createElement(_Card2.default, { cardInfo: cardInfo, colorIndex: index % 4 }),
             _react2.default.createElement(
               'div',
               { className: 'portalLabel' },
@@ -774,6 +773,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var renderSignup = function renderSignup(csrf) {
   var onLogin = function onLogin() {
+    hideMessage('#errorMessage');
     renderLogin(csrf);
   };
 
@@ -782,6 +782,7 @@ var renderSignup = function renderSignup(csrf) {
 
 var renderLogin = function renderLogin(csrf) {
   var onSignUp = function onSignUp() {
+    hideMessage('#errorMessage');
     renderSignup(csrf);
   };
 
@@ -1131,7 +1132,13 @@ var Login = function (_Component) {
         return false;
       }
 
-      sendAjax('POST', $('#loginForm').attr('action'), $('#loginForm').serialize(), redirect);
+      sendAjax('POST', $('#loginForm').attr('action'), $('#loginForm').serialize(), redirect, function (response) {
+        if (response.status === 401) {
+          handleError('Username or password does not match');
+        } else {
+          handleError('An error occurred');
+        }
+      });
 
       return false;
     }

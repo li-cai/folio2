@@ -6,7 +6,7 @@ const COLORS = ['#C5EFF7', '#FFEB3B', '#87D37C', '#BE90D4'];
 class Card extends Component {
   render() {
     const { name, title, skills, email, portfolio } = this.props.cardInfo;
-    const colorIndex = this.props.colorIndex ? this.props.colorIndex : 1;
+    const colorIndex = this.props.colorIndex === 0 || this.props.colorIndex ? this.props.colorIndex : 1;
     const color = COLORS[colorIndex];
 
     return (

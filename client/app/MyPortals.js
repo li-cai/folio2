@@ -22,7 +22,6 @@ class MyPortals extends Component {
 
   renderPortals() {
     const portals = this.state.portals;
-    console.log(portals);
 
     if (portals.length < 1) {
       return (<div>No portals have been created yet.</div>);
@@ -37,7 +36,7 @@ class MyPortals extends Component {
         };
         return (
           <div key={index} className="portalCard">
-            <Card cardInfo={cardInfo} />
+            <Card cardInfo={cardInfo} colorIndex={index % 4} />
             <div className="portalLabel">
               <div className="portalNumber">{index + 1}</div>
               {portal.label}

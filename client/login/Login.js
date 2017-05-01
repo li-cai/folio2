@@ -10,7 +10,19 @@ class Login extends Component {
       return false;
     }
 
-    sendAjax('POST', $('#loginForm').attr('action'), $('#loginForm').serialize(), redirect);
+    sendAjax(
+      'POST',
+      $('#loginForm').attr('action'),
+      $('#loginForm').serialize(),
+      redirect,
+      function(response) {
+        if (response.status === 401) {
+          handleError('Username or password does not match');
+        } else {
+          handleError('An error occurred');
+        }
+      }
+    );
 
     return false;
   }
