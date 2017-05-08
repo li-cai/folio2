@@ -28,6 +28,14 @@ const AccountSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  maxPortals: {
+    type: Number,
+    default: 2,
+  },
+  maxFolios: {
+    type: Number,
+    default: 10,
+  },
 });
 
 AccountSchema.statics.toAPI = doc => ({
