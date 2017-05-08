@@ -7,20 +7,20 @@ html, body {
 }
 
 .loginContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: #A4B8CE;
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 div {
-	font-family: 'Chivo';
+  font-family: 'Chivo';
 }
 
 a {
-	cursor: pointer !important;
+  cursor: pointer !important;
 }
 
 #app {
@@ -33,62 +33,62 @@ a {
 }
 
 .nav {
-    width: 100%;
-		text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 #content {
-	text-align: center;
-	padding: 30px;
+  text-align: center;
+  padding: 30px;
 }
 
 .ui.input.textField {
-	display: block;
-	margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .textField input {
-	font-family: 'Chivo', sans-serif !important;
-	font-size: 1.1em;
-	width: 300px;
+  font-family: 'Chivo', sans-serif !important;
+  font-size: 1.1em;
+  width: 300px;
 }
 
 .ui.button.loginButton {
-	font-family: 'Chivo', sans-serif !important;
-	margin-top: 5px;
-	width: 300px;
+  font-family: 'Chivo', sans-serif !important;
+  margin-top: 5px;
+  width: 300px;
 }
 
 .signUpBlurb {
-	margin-top: 35px;
-	font-size: 1.1em;
+  margin-top: 35px;
+  font-size: 1.1em;
 }
 
 .loginContainer #errorMessage {
-	text-align: center;
+  text-align: center;
 }
 
 #errorMessage {
-	font-size: 1.1em;
-	color: #A83C2D;
-	margin: 20px 0 10px;
-	font-weight: 700;
+  font-size: 1.1em;
+  color: #A83C2D;
+  margin: 20px 0 10px;
+  font-weight: 700;
 }
 
 #successMessage {
-	font-size: 1.1em;
-	color: green;
-	margin: 20px 0 10px;
-	font-weight: 700;
+  font-size: 1.1em;
+  color: green;
+  margin: 20px 0 10px;
+  font-weight: 700;
 }
 
 /* Portals */
 .sideNav {
-	position: relative;
-	flex: 0 0 260px;
-	background-color: #A4B8CE;
-	text-align: center;
-	height: 100%;
+  position: relative;
+  flex: 0 0 260px;
+  background-color: #A4B8CE;
+  text-align: center;
+  height: 100%;
 }
 
 .newportal .breadcrumb {
@@ -97,47 +97,47 @@ a {
 }
 
 .portalContainer {
-	display: flex;
-	width: 100%;
-	height: 100%;
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 .portalContainer .logo {
-	padding: 25px 0;
-	width: 175px;
-	height: auto;
+  padding: 25px 0;
+  width: 175px;
+  height: auto;
 }
 
 .sidebarLink {
-	color: rgba(255, 255, 255, 0.7);
-	text-align: left;
-	padding: 12px 40px;
-	transition: background-color 0.4s ease;
-	font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left;
+  padding: 12px 40px;
+  transition: background-color 0.4s ease;
+  font-size: 1.1em;
 }
 
 .sidebarLink.active {
-	background-color: rgba(255, 255, 255, 0.1);
-	color: white;
-	border-left: 5px solid #ffe21f;
-	box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-left: 5px solid #ffe21f;
+  box-sizing: border-box;
 }
 
 .sidebarLink:hover {
-	cursor: pointer;
-	background-color: rgba(255, 255, 255, 0.2);
-	color: white;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .logout {
-	position: absolute;
-	bottom: 15px;
-	width: 100%;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
 }
 
 .settings, .portals, .container {
-	padding: 50px;
-	width: 100%;
+  padding: 50px;
+  width: 100%;
 }
 
 .portals {
@@ -145,22 +145,22 @@ a {
 }
 
 .header {
-	font-size: 2em;
-	font-weight: 700;
-	margin-bottom: 40px;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 40px;
 }
 
 .settings #errorMessage {
-	text-align: left;
+  text-align: left;
 }
 
 .newPortalButton {
-	float: right;
+  float: right;
 }
 
 .newportal .celled.horizontal.list {
-	display: block;
-	margin-bottom: 20px;
+  display: block;
+  margin-bottom: 20px;
 }
 
 
@@ -212,8 +212,8 @@ a {
 
 .graphic {
   display: inline-block;
-	width: 30px;
-	height: 30px;
+  width: 30px;
+  height: 30px;
   background-color: #FFEB3B;
   vertical-align: top;
 }
@@ -248,21 +248,21 @@ a {
 }
 
 .portalField, .ui.button.createButton {
-	width: 360px;
+  width: 360px;
 }
 
 .portalHeader {
-	margin-top: 40px;
-	margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .ui.button.createButton {
-	display: block;
-	margin-top: 40px;
+  display: block;
+  margin-top: 40px;
 }
 
 .ui.label.portalPill {
-	font-weight: 400;
+  font-weight: 400;
 }
 
 .portalCard {
@@ -287,4 +287,22 @@ a {
 
 .portalLink {
   float: right;
+}
+
+.colorSwatch {
+  display: inline-block;
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.colorSwatch.active {
+  border: 4px solid #E6EFF0;
+}
+
+.loginContainer #errorMessage {
+  margin-top: 0;
 }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import classnames from 'classnames';
 
+import ColorPicker from './ColorPicker.js';
+
 class NewPortal extends Component {
 
   constructor() {
@@ -8,12 +10,13 @@ class NewPortal extends Component {
 
     this.state = {
       titles: [],
-      skills: []
+      skills: [],
     };
 
     this.addSkill = this.addSkill.bind(this);
     this.addTitle = this.addTitle.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.saveColor = this.saveColor.bind(this);
   }
 
   addSkill(e) {
@@ -58,6 +61,7 @@ class NewPortal extends Component {
         label,
         titles,
         skills,
+        color: this.color,
         _csrf: this.props.csrf
       };
 
@@ -69,6 +73,10 @@ class NewPortal extends Component {
         }
       }.bind(this));
     }
+  }
+
+  saveColor(color) {
+    this.color = color;
   }
 
   render() {
@@ -113,6 +121,8 @@ class NewPortal extends Component {
             Add
           </button>
         </div>
+        <h3 className="portalHeader">Pick a Background Color for your Folio Portal:</h3>
+        <ColorPicker saveColor={this.saveColor} />
         <button className="large ui blue button createButton" onClick={this.handleSubmit}>
           Create Portal
         </button>

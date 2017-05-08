@@ -40,7 +40,7 @@ PortalSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
     owner: convertId(ownerId),
   };
-  return PortalModel.find(search).select('_id label titles skills').exec(callback);
+  return PortalModel.find(search).select('_id label titles skills color').exec(callback);
 };
 
 PortalModel = mongoose.model('Portal', PortalSchema);

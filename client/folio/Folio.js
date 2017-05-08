@@ -112,10 +112,10 @@ class Folio extends Component {
   }
 
   render() {
-    const { isErrorShown } = this.state;
+    const { isErrorShown, portal } = this.state;
 
     return (
-      <div className="folioContainer">
+      <div className="folioContainer" style={{ backgroundColor: portal.color ? portal.color: '#A4B8CE'}}>
         <div className="folioHeader">
           <img className="logo" src="/assets/img/logo.png" />
           {
