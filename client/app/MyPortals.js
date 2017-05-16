@@ -31,17 +31,21 @@ class MyPortals extends Component {
           name: 'Someone\'s Name',
           title: portal.titles[0],
           skills: portal.skills,
+          color: portal.color,
           email: 'interested@folio.com',
           portfolio: 'myporfolio.com'
         };
         return (
           <div key={index} className="portalCard">
-            <Card cardInfo={cardInfo} colorIndex={index % 4} />
+            <Card cardInfo={cardInfo} />
             <div className="portalLabel">
               <div className="portalNumber">{index + 1}</div>
               {portal.label}
-              <a className="portalLink" href={`/${portal._id}`} target="_blank">
+              <a className="portalLink">
                 <i className="external icon"></i>
+              </a>
+              <a className="portalLink" href={`/${portal._id}`} target="_blank">
+                <i className="edit icon"></i>
               </a>
             </div>
           </div>

@@ -156,15 +156,16 @@ var Card = function (_Component) {
           title = _props$cardInfo.title,
           skills = _props$cardInfo.skills,
           email = _props$cardInfo.email,
-          portfolio = _props$cardInfo.portfolio;
+          portfolio = _props$cardInfo.portfolio,
+          color = _props$cardInfo.color;
 
       var colorIndex = this.props.colorIndex === 0 || this.props.colorIndex ? this.props.colorIndex : 1;
-      var color = COLORS[colorIndex];
+      var cardColor = color ? color : COLORS[colorIndex];
 
       return _react2.default.createElement(
         'div',
-        { className: 'card', style: { borderTop: '12px solid ' + color } },
-        _react2.default.createElement('div', { className: 'graphic', style: { backgroundColor: color } }),
+        { className: 'card', style: { borderTop: '12px solid ' + cardColor } },
+        _react2.default.createElement('div', { className: 'graphic', style: { backgroundColor: cardColor } }),
         _react2.default.createElement(
           'div',
           { className: 'info' },
@@ -339,13 +340,14 @@ var MyPortals = function (_Component) {
             name: 'Someone\'s Name',
             title: portal.titles[0],
             skills: portal.skills,
+            color: portal.color,
             email: 'interested@folio.com',
             portfolio: 'myporfolio.com'
           };
           return _react2.default.createElement(
             'div',
             { key: index, className: 'portalCard' },
-            _react2.default.createElement(_Card2.default, { cardInfo: cardInfo, colorIndex: index % 4 }),
+            _react2.default.createElement(_Card2.default, { cardInfo: cardInfo }),
             _react2.default.createElement(
               'div',
               { className: 'portalLabel' },
@@ -357,8 +359,13 @@ var MyPortals = function (_Component) {
               portal.label,
               _react2.default.createElement(
                 'a',
-                { className: 'portalLink', href: '/' + portal._id, target: '_blank' },
+                { className: 'portalLink' },
                 _react2.default.createElement('i', { className: 'external icon' })
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'portalLink', href: '/' + portal._id, target: '_blank' },
+                _react2.default.createElement('i', { className: 'edit icon' })
               )
             )
           );
