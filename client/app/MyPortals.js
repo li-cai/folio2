@@ -61,8 +61,8 @@ class MyPortals extends Component {
       <div className="myportals">
         <div className="header">
           My Portals
-          <button className="medium ui olive button newPortalButton" onClick={this.props.goToNewPortal}>
-            New Portal
+          <button className="circular ui massive icon olive button newPortalButton" onClick={this.props.goToNewPortal}>
+            <i className="icon add"></i>
           </button>
         </div>
         <div className="cardContainer">

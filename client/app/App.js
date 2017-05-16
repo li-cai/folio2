@@ -3,10 +3,12 @@ import classnames from 'classnames';
 
 import Settings from './Settings.js';
 import Portals from './Portals.js';
+import Upgrade from './Upgrade.js';
 
 const AppState = {
 	MY_PORTALS: 0,
-	SETTINGS: 1
+	SETTINGS: 1,
+  UPGRADE: 2,
 };
 
 class App extends Component {
@@ -25,6 +27,9 @@ class App extends Component {
 
 			case AppState.MY_PORTALS:
 				return <Portals csrf={this.props.csrf} />;
+
+      case AppState.UPGRADE:
+        return <Upgrade csrf={this.props.csrf} />;
 
 			default:
 				break;
@@ -46,11 +51,16 @@ class App extends Component {
 					>
 						Settings
 					</div>
-					<div className="sidebarLink logout" onClick={() => {
-						window.location = '/logout';
-					}}>
-						Logout
-					</div>
+          <div className="bottomNav">
+            <div className="sidebarLink" onClick={() => this.setState({ page: AppState.UPGRADE })}>
+              Upgrade
+            </div>
+  					<div className="sidebarLink logout" onClick={() => {
+  						window.location = '/logout';
+  					}}>
+  						Logout
+  					</div>
+          </div>
 			  </div>
 				{this.renderPage()}
 			</div>

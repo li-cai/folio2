@@ -129,7 +129,7 @@ a {
   color: white;
 }
 
-.logout {
+.bottomNav {
   position: absolute;
   bottom: 15px;
   width: 100%;
@@ -309,4 +309,25 @@ a {
 
 .loginContainer #errorMessage {
   margin-top: 0;
+}
+
+.upgradeSegment {
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  font-size: 1.2em !important;
+  margin-right: 30px !important;
+  margin-top: 0px !important;
+}
+
+.upgradeSegment:hover {
+  cursor: pointer;
+}
+
+.upgradeHeader {
+  font-weight: 700;
+}
+
+.upgradeFolios {
+  margin: 25px 0;
 }

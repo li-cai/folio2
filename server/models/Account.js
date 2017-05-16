@@ -28,6 +28,10 @@ const AccountSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  accountType: {
+    type: String,
+    default: 'Basic',
+  },
   maxPortals: {
     type: Number,
     default: 2,

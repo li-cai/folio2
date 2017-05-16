@@ -126,6 +126,23 @@ const getToken = (request, response) => {
   res.json(csrfJSON);
 };
 
+const getAccountType = (request, response) => {
+  const id = request.session.account._id;
+  return Account.AccountModel.findById(id, (err, doc) => {
+    if (err) {
+      console.log(err);
+      return response.status(400).json({ error: 'An error occurred' });
+    }
+
+    return response.status(200).json({ accountType: doc.accountType });
+  });
+};
+
+const updateAccountType = (request, response) => {
+  console.log(request);
+  console.log(response);
+};
+
 module.exports = {
   loginPage,
   logout,
@@ -133,4 +150,6 @@ module.exports = {
   login,
   getToken,
   changePassword,
+  getAccountType,
+  updateAccountType,
 };

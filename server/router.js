@@ -11,6 +11,9 @@ const router = (app) => {
   app.get('/getPortals', mid.requiresLogin, controllers.Portal.getPortals);
   app.post('/portal', mid.requiresLogin, controllers.Portal.createPortal);
   app.post('/changePassword', mid.requiresLogin, controllers.Account.changePassword);
+  app.get('/accountType', mid.requiresLogin, controllers.Account.getAccountType);
+  app.post('/accountType', mid.requiresLogin, controllers.Account.updateAccountType);
+  app.post('/changePassword', mid.requiresLogin, controllers.Account.changePassword);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.get('/:portalId', controllers.Folio.folioPage);
   app.get('/portal/:id', controllers.Folio.getPortal);
