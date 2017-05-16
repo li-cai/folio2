@@ -7,21 +7,27 @@ class ColorPicker extends Component {
   constructor() {
     super();
 
-    this.state = { selected: 0 };
+    this.state = {  color: COLORS[0] };
+  }
+
+  componentDidMount() {
+    if (this.props.color) {
+      this.setState({ color: this.props.color });
+    }
   }
 
   render() {
+    const activeColor = this.props.color ? this.props.color : this.state.color;
     return (
       <div className="colorpicker">
         {COLORS.map((color, index) => {
           const swatchClass = classnames({
             colorSwatch: true,
-            active: index === this.state.selected
+            active: color === activeColor
           });
           return (
             <div key={index} className={swatchClass} style={{backgroundColor: color}} onClick={function() {
-              this.setState({ selected: index });
-              this.props.saveColor(COLORS[index]);
+              this.props.saveColor(color);
             }.bind(this)}></div>
           );
         })}

@@ -41,10 +41,12 @@ class MyPortals extends Component {
             <div className="portalLabel">
               <div className="portalNumber">{index + 1}</div>
               {portal.label}
-              <a className="portalLink">
+              <a className="portalLink" href={`/${portal._id}`} target="_blank">
                 <i className="external icon"></i>
               </a>
-              <a className="portalLink" href={`/${portal._id}`} target="_blank">
+              <a className="portalLink" onClick={() => {
+                this.props.goToEditPortal(portal);
+              }}>
                 <i className="edit icon"></i>
               </a>
             </div>
