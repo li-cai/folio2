@@ -4,29 +4,48 @@ const Portal = models.Portal;
 const portalPage = (req, res) => res.render('app', { csrfToken: req.csrfToken() });
 
 const createPortal = (req, res) => {
-  const { label, titles, skills, color } = req.body;
+  const { label, titles, skills, color, id } = req.body;
+
+  console.log(id);
 
   if (!label || !titles || !skills || titles.length < 1 || skills.length < 1 || !color) {
     return res.status(400).json({ error: 'The label, titles, and skills are required' });
   }
 
-  const portalData = { label, titles, skills, color, owner: req.session.account._id };
+  if (id) {
+    console.log('existing portal');
 
-  const newPortal = new Portal.PortalModel(portalData);
-  const promise = newPortal.save();
+    Portal.PortalModel.findByIdAndUpdate(
+      id,
+      { $set: { label, titles, skills, color } },
+      { new: true }, (err, doc) => {
+        if (err) {
+          console.log(err);
+          return res.status(400).json({ error: err });
+        }
 
-  promise.then(() => res.status(200).json({ message: 'Portal successfully created :)' }));
+        console.log(doc);
 
-  promise.catch((err) => {
-    console.log(err);
+        return res.status(200).json({ message: 'Portal updated successfully :)' });
+      });
+  } else {
+    const portalData = { label, titles, skills, color, owner: req.session.account._id };
+    const newPortal = new Portal.PortalModel(portalData);
+    const promise = newPortal.save();
 
-    if (err.code === 11000) {
-      return res.status(400).json({ error: 'Portal already exists' });
-    }
-    return res.status(400).json({ error: 'An error occurred' });
-  });
+    promise.then(() => res.status(200).json({ message: 'Portal successfully created :)' }));
 
-  return promise;
+    promise.catch((err) => {
+      console.log(err);
+
+      if (err.code === 11000) {
+        return res.status(400).json({ error: 'Portal already exists' });
+      }
+      return res.status(400).json({ error: 'An error occurred' });
+    });
+
+    return promise;
+  }
 };
 
 const getPortals = (req, res) => {

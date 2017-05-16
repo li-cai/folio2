@@ -79,6 +79,10 @@ class PortalForm extends Component {
         _csrf: this.props.csrf
       };
 
+      if (this.props.portalData) {
+        data.id = this.props.portalData._id;
+      }
+
       sendAjax('POST', '/portal', data, function(response) {
         if (response.error) {
           handleError(response.error);
@@ -103,7 +107,9 @@ class PortalForm extends Component {
           <div className="ui label">
             Name
           </div>
-          <input id="nameLabelField" type="text" placeholder="Enter a name / label for this Portal" value={this.state.name} />
+          <input id="nameLabelField" type="text" placeholder="Enter a name / label for this Portal" value={this.state.name}
+            onChange={(e) => { this.setState({ name: e.target.value }); }}
+          />
         </div>
         <h3 className="portalHeader">What Titles are you looking for?</h3>
         <div className="ui celled horizontal list">

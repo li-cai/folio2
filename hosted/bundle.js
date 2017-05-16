@@ -699,6 +699,10 @@ var PortalForm = function (_Component) {
           _csrf: this.props.csrf
         };
 
+        if (this.props.portalData) {
+          data.id = this.props.portalData._id;
+        }
+
         sendAjax('POST', '/portal', data, function (response) {
           if (response.error) {
             handleError(response.error);
@@ -733,7 +737,11 @@ var PortalForm = function (_Component) {
             { className: 'ui label' },
             'Name'
           ),
-          _react2.default.createElement('input', { id: 'nameLabelField', type: 'text', placeholder: 'Enter a name / label for this Portal', value: this.state.name })
+          _react2.default.createElement('input', { id: 'nameLabelField', type: 'text', placeholder: 'Enter a name / label for this Portal', value: this.state.name,
+            onChange: function onChange(e) {
+              _this2.setState({ name: e.target.value });
+            }
+          })
         ),
         _react2.default.createElement(
           'h3',

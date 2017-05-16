@@ -247,7 +247,11 @@ a {
   pointer-events: none;
 }
 
-.portalField, .ui.button.createButton {
+.portalField {
+  width: 450px;
+}
+
+.ui.button.createButton {
   width: 360px;
 }
 
